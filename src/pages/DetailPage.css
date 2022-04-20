@@ -1,0 +1,127 @@
+.product-detail-page {
+  margin: 100px 100px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  min-width: 60vw;
+  width: auto;
+  max-width: 100vw;
+  height: auto;
+}
+.main-container .left-contain {
+  display: block;
+  min-width: 50%;
+}
+.movie-backdrop {
+  padding: 0 1rem;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-height: 100vh;
+}
+
+.image-layer {
+  border: 1px solid white;
+  margin: 0 auto;
+}
+.text-and-logo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.text-and-logo .left-container {
+  position: absolute;
+  margin-left: 5%;
+  bottom: 10%;
+}
+
+.text-and-logo .buttons-group {
+  position: relative;
+}
+.main-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  max-width: 90%;
+  min-width: 40%;
+  position: relative;
+}
+
+.text-and-logo .tagline {
+  position: absolute;
+  color: white;
+  max-width: 50%;
+  min-width: 20%;
+  width: auto;
+  bottom: 10%;
+  margin: 1rem;
+  right: 5%;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.round-border {
+  border-radius: 50%;
+  background: #858683;
+  padding: 0.3rem;
+  border: 1px solid white;
+}
+
+.round-border:hover {
+  background: rgb(198, 192, 192);
+  transition: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+.movie-info {
+  position: relative;
+  margin-top: 10px;
+  width: auto;
+  max-width: 95%;
+  max-height: 100%;
+  background-color: rgb(32, 43, 43);
+  height: auto;
+  min-height: 20%;
+  border: 1px solid pink;
+  padding: 0 1rem;
+  display: flex;
+  left: 2.35%;
+  min-width: 40%;
+}
+.movie-info .overview {
+  color: white;
+  max-width: 60%;
+  min-width: 30%;
+  margin: 1rem 1rem;
+  max-height: 30vh;
+  overflow: hidden;
+}
+
+.right-info {
+  position: absolute;
+  right: 5%;
+  width: auto;
+  max-width: 30%;
+  color: white;
+  font-size: smaller;
+  padding: 0.5rem;
+}
+.right-info .duration {
+  margin: 0.5rem;
+}
+
+.right-info .genres {
+  width: auto;
+  margin: 0.5rem;
+}
+
+.right-info .release {
+  margin: 0.5rem;
+}
+.close-button-detail-movie:hover {
+  color: rgb(195, 191, 191) !important;
+  background-color: rgb(60, 92, 92) !important;
+}

@@ -1,0 +1,50 @@
+.movies_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+  width: 40vw;
+}
+
+.other-movies {
+  width: auto;
+  min-width: 40vw;
+  height: auto;
+  max-height: 100vh;
+  color: white;
+}
+.other-movies > .title {
+  position: relative;
+  font-size: 1.2rem;
+  text-align: center;
+  top: 0;
+  background-color: rgb(69, 65, 72);
+  width: 100%;
+}
+
+.movies_container .movie {
+  padding: 0.2rem;
+  max-width: 50%;
+  width: auto;
+  text-align: center;
+  cursor: pointer;
+  height: auto;
+}
+
+.movies_container .movie img {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.movies_container .movie img:hover {
+  width: 250px;
+  height: auto;
+  transform: scale(1.09);
+  transition: width 1s, height 1s;
+  border-radius: 3%;
+}
+
+.itemInfo .itemInfoTop .title {
+  font-size: 1rem;
+  width: auto;
+  max-width: 60%;
+}

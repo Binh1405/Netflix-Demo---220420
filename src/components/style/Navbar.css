@@ -1,0 +1,6 @@
+.navbar-link:hover {
+  cursor: pointer;
+}
+.navbar-link {
+  margin-right: 0.3rem;
+}
