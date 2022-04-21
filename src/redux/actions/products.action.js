@@ -24,14 +24,24 @@ productAction.getFeaturedMovie = () => {
   };
 };
 
-productAction.getMovieByQuery = (filters) => {
+productAction.getQuery = (searchQuery) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: types.GET_QUERY, payload: searchQuery });
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+};
+productAction.getMovieByQuery = (query) => {
+  console.log("query", query);
   return async (dispatch) => {
     try {
       dispatch({ type: types.GET_MOVIEBYQUERY_REQUEST, payload: null });
       const res = await apiService.get(
-        `/search/movie?apikey=${api_key}&query=${filters}`
+        `/search/movie?api_key=${api_key}&query=${query}`
       );
-      console.log("searchmovie", res);
+      console.log("searchMovies", res);
       dispatch({
         type: types.GET_MOVIEBYQUERY_SUCCESS,
         payload: res.data.results,

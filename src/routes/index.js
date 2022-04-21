@@ -16,7 +16,7 @@ function Router() {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/product/:movie_id" element={<DetailPage />} />
-      <Route path="/search/:query" element={<SearchPage />} />
+      <Route path="search/:query" element={<SearchPage />} />
     </Routes>
   );
 }

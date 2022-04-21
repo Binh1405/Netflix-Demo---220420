@@ -8,7 +8,7 @@ const initialState = {
     top_rated: [],
     popular: [],
   },
-
+  searchMovies: [],
   isLoading: false,
   singleMovie: {},
   errorMessage: "",
@@ -16,13 +16,15 @@ const initialState = {
   alternativeTitle: {},
   genres: [],
   recommendationMovies: [],
-  searchMovies: [],
+  searchQuery: "",
 };
 
 const productReducer = (state = initialState, action) => {
   const { type, payload } = action;
   console.log("payload", payload);
   switch (type) {
+    case types.GET_QUERY:
+      return { ...state, searchQuery: payload };
     case types.GET_FEATURED_MOVIE_REQUEST:
     case types.GET_TRAILER_REQUEST:
     case types.GET_ALTERNATIVE_TITLE_REQUEST:

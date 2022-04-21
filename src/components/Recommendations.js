@@ -12,7 +12,7 @@ const Recommendations = ({ movies, loading }) => {
         <LoadingScreen />
       ) : (
         <div className="movies_container">
-          {movies.splice(0, 6).map((movie, index) => (
+          {movies?.splice(0, 6).map((movie, index) => (
             <div className="movie" key={index}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}

@@ -1,15 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingScreen from "../components/LoadingScreen";
-import ProductCard from "../components/ProductCard";
 import CategoryMovies from "../components/RowComponent";
 import productAction from "../redux/actions/products.action";
 import "./style/MainContent.css";
 
-const MainContent = ({ filterMovies }) => {
+const MainContent = ({ searchMovies, filterMovies }) => {
   const categories = ["now_playing", "popular", "top_rated", "upcoming"];
   const allMovies = useSelector((state) => state.products.categoryMovies);
-  console.log("filterMovies", filterMovies);
+  console.log("searchMovies", searchMovies);
   console.log("allMovies", allMovies);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,7 +18,11 @@ const MainContent = ({ filterMovies }) => {
       ])
     );
   });
-  return filterMovies?.length ? (
+  return searchMovies?.length ? (
+    <div className="main-content">
+      <CategoryMovies searchMovies={searchMovies} />
+    </div>
+  ) : filterMovies?.length ? (
     <div className="main-content">
       <CategoryMovies filterMovies={filterMovies} />
     </div>

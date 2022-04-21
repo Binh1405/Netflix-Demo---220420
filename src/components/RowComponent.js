@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
-import LoadingScreen from "./LoadingScreen";
 import "../layout/style/MainContent.css";
 import { useDispatch, useSelector } from "react-redux";
 import productAction from "../redux/actions/products.action";
 import ProductCard from "./ProductCard";
 
-const RowComponent = ({ index, category, allMovies, filterMovies }) => {
+const RowComponent = ({
+  index,
+  category,
+  allMovies,
+  filterMovies,
+  searchMovies,
+}) => {
   const movieGenres = useSelector((state) => state.products.genres);
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
-  const loading = useSelector((state) => state.products.isLoading);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productAction.getGenresMovie());
@@ -27,9 +31,8 @@ const RowComponent = ({ index, category, allMovies, filterMovies }) => {
       listRef.current.style.transform = `translateX(${-250 + distance}px)`;
     }
   };
-  return allMovies ? (
+  return filterMovies ? (
     <div className="row-container" key={index}>
-      <h1>{category}</h1>
       <button
         className="carousel-control-prev"
         type="button"
@@ -42,7 +45,36 @@ const RowComponent = ({ index, category, allMovies, filterMovies }) => {
         <span className="visually-hidden">Previous</span>
       </button>
       <div className="movie-poster" ref={listRef}>
-        {allMovies[category].map((movie) => (
+        {filterMovies.map((movie) => (
+          <ProductCard movie={movie} index={index} movieGenres={movieGenres} />
+        ))}
+      </div>
+      <button
+        className="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+        onClick={() => handleClick("right")}
+      >
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Next</span>
+      </button>
+    </div>
+  ) : searchMovies ? (
+    <div className="row-container" key={index}>
+      <button
+        className="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+        onClick={() => handleClick("left")}
+        style={{ display: !isMoved && "none" }}
+      >
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Previous</span>
+      </button>
+      <div className="movie-poster" ref={listRef}>
+        {searchMovies.map((movie) => (
           <ProductCard movie={movie} index={index} movieGenres={movieGenres} />
         ))}
       </div>
@@ -59,6 +91,7 @@ const RowComponent = ({ index, category, allMovies, filterMovies }) => {
     </div>
   ) : (
     <div className="row-container" key={index}>
+      <h1>{category}</h1>
       <button
         className="carousel-control-prev"
         type="button"
@@ -71,7 +104,7 @@ const RowComponent = ({ index, category, allMovies, filterMovies }) => {
         <span className="visually-hidden">Previous</span>
       </button>
       <div className="movie-poster" ref={listRef}>
-        {filterMovies.map((movie) => (
+        {allMovies[category]?.map((movie) => (
           <ProductCard movie={movie} index={index} movieGenres={movieGenres} />
         ))}
       </div>
